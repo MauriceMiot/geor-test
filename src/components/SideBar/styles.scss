@@ -1,14 +1,16 @@
 ._sidebarContainer{
-    width: 20%;
+    width: 12%;
     background-color: #EBEBEB;
     height: 100vh;
     color: black;
+    
     
 }
 ._container{
     display: flex;
     justify-content: flex-start;
     width: 100%;
+    
 }
 
 ._list{
@@ -16,14 +18,31 @@
     text-align: left;
     line-height: 2;
     width: 100%;
+   
 }
 
 ._element{
-    background: lightcoral;
+    background: #b3b2b2;
     width: 100%;
     height: 50%;
     margin-bottom: 1px;
-    border-bottom: 1px;
-    border-color: 1px solid #34363D;
-    
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: black;
+    outline: none;
 }
+._element:hover{
+    color: white;
+}
+
+._links{
+    text-decoration: none;
+}
+._links::visited ._links::active {
+    text-decoration: none;
+  }
+
+  li:active li:visited{
+    text-decoration: none;
+  }

@@ -1,12 +1,20 @@
 <script setup>
 import Vue from 'vue'
 import  { Navbar }  from './components'
+import dealerships from './assets/data/dealerships.js'
+import clients from './assets/data/clients.js'
+
+function setLocalStorage(){
+   localStorage.setItem('dealerships',JSON.stringify(dealerships))
+    localStorage.setItem('clients',JSON.stringify(clients))
+}
 
 export default Vue.extend({
     name: 'app',
     components: {
       Navbar,
-    }
+    },
+    methods: setLocalStorage()
 });
 </script>
 

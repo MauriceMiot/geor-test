@@ -2,9 +2,9 @@
   <div class='_sidebarContainer'>
   <div class='_container'>   
       <ul class='_list'>
-       <li class="_element"><a>All</a></li>
-       <li class="_element"><a>Create</a></li>
-       <li class="_element"><a>Delete</a></li>
+      <button class="_element"> <router-link tag="li" to="/dealerships">{{ $t('dealerships') }}</router-link> </button>
+      <button class="_element"> <router-link tag="li" to="/clients">{{ $t('clients') }}</router-link> </button>
+      <button class="_element"> <router-link tag="li" to="/delete">{{ $t('delete') }}</router-link> </button>
       </ul>
   </div>
   </div>
