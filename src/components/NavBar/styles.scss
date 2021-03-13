@@ -1,0 +1,29 @@
+._navbarContainer{
+    width: 100%;
+}
+._container{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #353535;
+    height: 7vh;
+}
+
+._logo{
+    margin-left: 1%;
+}
+._selectLang{
+  margin-right: 0.8rem;
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  font-weight: 600;
+
+  & option {
+    color: #353535;
+  }
+}
