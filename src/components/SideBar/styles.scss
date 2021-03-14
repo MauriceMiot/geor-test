@@ -35,14 +35,10 @@
 ._element:hover{
     color: white;
 }
-
-._links{
-    text-decoration: none;
+li{
+    padding: 10px;
 }
-._links::visited ._links::active {
+li:active li:visited{
     text-decoration: none;
-  }
-
-  li:active li:visited{
-    text-decoration: none;
+    padding: 10px;
   }

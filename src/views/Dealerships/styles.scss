@@ -2,6 +2,7 @@
 display: flex;
 justify-content: center;
 align-items: center;
+flex-direction: column;
 }
 
 table{
@@ -28,4 +29,35 @@ tr:nth-child(even) {
 
 ._icons{
   cursor: pointer;
+}
+
+._form{
+  display: flex;
+  justify-content: center;
+  background-color: #EBEBEB;
+  margin: 3%;
+  padding:10px;
+  border-radius: 30px;
+}
+
+._input{
+  border: none;
+  border-bottom: 1px solid #353535;
+  margin-left: 3%;
+  margin-right: 3%;
+  width: 25%;
+  background-color: transparent;
+  outline: none;
+}
+
+._button{
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: white;
+  outline: none;
+  width: 60px;
+  height: 30px;
+  background-color: #353535;
 }

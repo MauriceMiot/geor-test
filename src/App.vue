@@ -5,8 +5,8 @@ import dealerships from './assets/data/dealerships.js'
 import clients from './assets/data/clients.js'
 
 function setLocalStorage(){
-   localStorage.setItem('dealerships',JSON.stringify(dealerships))
-    localStorage.setItem('clients',JSON.stringify(clients))
+    if(!localStorage.dealerships) localStorage.setItem('dealerships',JSON.stringify(dealerships))
+    if(!localStorage.clients) localStorage.setItem('clients',JSON.stringify(clients))
 }
 
 export default Vue.extend({
