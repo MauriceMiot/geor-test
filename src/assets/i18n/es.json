@@ -1,5 +1,14 @@
 {
-  "create":"Crear",
-  "all":"Todos",
-  "delete":"Borrar"
-  }
+  "dealerships":"Concesionarios",
+  "clients":"Clientes",
+  "delete":"Borrar",
+  "name": "Nombre",
+  "lastname": "Apellido",
+  "carsnumber": "Numero de autos",
+  "municipality": "Municipio",
+  "phone": "Telefono",
+  "options": "Opciones",
+  "cars": "Autos",
+  "add": "Crear",
+  "identification": "Identificacion"
+}

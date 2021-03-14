@@ -1,5 +1,14 @@
 {
-"create":"Create",
-"all":"All",
-"delete":"Delete"
+  "dealerships":"Dealerships",
+  "clients":"Clients",
+  "delete":"Delete",
+  "name": "Name",
+  "lastname": "Last name",
+  "carsnumber": "Cars number",
+  "municipality": "Municipality",
+  "phone": "Phone",
+  "options": "Options",
+  "cars": "Cars",
+  "add": "Add",
+  "identification": "Identification"
 }

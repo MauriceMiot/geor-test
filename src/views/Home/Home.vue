@@ -2,12 +2,14 @@
 import Vue from 'vue'
 import  { SideBar }  from '../../components'
 
+
 export default Vue.extend({
     name: 'app',
     components: {
       SideBar,
-    }
+      }
 });
+
 
 </script>
 
@@ -15,7 +17,7 @@ export default Vue.extend({
 <div class='_main'>
     <SideBar/>
   <div class="_homeContainer">
-    <router-view/>
+   <router-view/>
   </div>
   </div>
 </template>
