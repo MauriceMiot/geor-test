@@ -10,7 +10,6 @@ const messages = Object.assign(languages)
 Vue.use(VueI18n)
 Vue.config.productionTip = false
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-
 var i18n = new VueI18n({
   locale: defaultLocale,
   fallbackLocale: 'en',

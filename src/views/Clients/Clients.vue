@@ -5,9 +5,11 @@ import Vue from 'vue'
 const data = localStorage.getItem('clients')
 const clients= JSON.parse(data)
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrash, faDownload} from '@fortawesome/free-solid-svg-icons'
+import jsPDF from 'jspdf'
+import 'jspdf-autotable'
 
-library.add(faEdit, faTrash)
+library.add(faEdit, faTrash, faDownload)
 
 export default Vue.extend({
     name: 'Clients',
@@ -18,11 +20,14 @@ export default Vue.extend({
            lastname: '',
            dealership: '',
            identification: '',
-           status: true
+           status: true,
+           edit:false,
+           indexed: null
           }
         },
     methods:{
        addClient: function()  {
+          if(!this.edit){
             this.clients.push ({
             name: this.name,
             lastname: this.lastname,
@@ -30,23 +35,33 @@ export default Vue.extend({
             identification: this.identification,
             status: true
             });
-            localStorage.setItem('clients',JSON.stringify(clients)) 
+          }
+          if (this.edit){
+             this.clients[this.indexed].name = this.name 
+             this.clients[this.indexed].lastname = this.lastname 
+             this.clients[this.indexed].dealership = this.dealership 
+             this.clients[this.indexed].identification = this.identification 
+          
+            this.edit = false
+          }
+        localStorage.setItem('clients',JSON.stringify(clients)) 
         },
-        editClient: function(index)  {
-            this.edit = this.clients[index]
-            console.log(this.edit)
-            localStorage.setItem('dealerships',JSON.stringify(this.edit)) 
-           /*  this.edit.push ({
-            name: this.name,
-            municipality: this.municipality,
-            carsnumber: this.carsnumber,
-            phone: this.phone,
-            }); */
-            localStorage.setItem('clients',JSON.stringify(clients))  
+        editClient: function(index, client)  {
+            this.indexed= index
+            this.edit = true
+            this.name= client.name
+            this.lastname= client.lastname
+            this.dealership= client.dealership
+            this.identification= client.identification
         },
          deleteClient: function(index)  {
           this.clients[index].status= false; 
           localStorage.setItem('clients',JSON.stringify(clients))
+        },
+        exportPDF() {
+            var doc = new jsPDF()
+              doc.autoTable({ html: '#clients-table'})
+              doc.save('clients.pdf')
         }
       }
     
@@ -55,6 +70,8 @@ export default Vue.extend({
 
 <template>
   <div class='_main'>
+  <div class='_formContainer'> 
+    <span class='_icons' @click='exportPDF' > <font-awesome-icon :icon="['fas', 'download']"/> </span>
   <form class='_form'>
      <input class='_input' type='text' v-model='name' v-bind:placeholder="$t('name')" />
      <input class='_input' type='text' v-model='lastname' v-bind:placeholder="$t('lastname')" />
@@ -62,12 +79,14 @@ export default Vue.extend({
      <input class='_input' type='text' v-model='dealership' v-bind:placeholder="$t('dealership')"/>
         <button class="_button" type='submit' @click='addClient'> {{ $t('add') }} </button>
   </form>
-    <table>
+  </div>
+    <table id='clients-table'>
       <tr>
         <th>{{ $t('dealerships') }}</th>
         <th>{{ $t('name') }}</th>
         <th>{{ $t('lastname') }}</th>
         <th>{{ $t('identification') }}</th>
+        <th>{{ $t('options') }}</th>
       </tr>
       <tr v-for="(client, index) in clients" v-bind:key="index">
         <td v-if='client.status == true'>{{client.dealership}}</td>
@@ -75,7 +94,7 @@ export default Vue.extend({
         <td v-if='client.status == true'>{{client.lastname}}</td>
        <td v-if='client.status == true'>{{client.identification}}</td>
        <td v-if='client.status == true' class='_iconsContainer'>
-          <span @click='editClient(index)' class='_icons'><font-awesome-icon :icon="['fas', 'edit']"/></span> 
+          <span @click='editClient(index, client)' class='_icons'><font-awesome-icon :icon="['fas', 'edit']"/></span> 
           <span @click='deleteClient(index)' class='_icons'><font-awesome-icon :icon="['fas', 'trash']"/></span> 
         </td>
       </tr>

@@ -27,4 +27,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Branch Legend
 
 GT-01 mockup, data dummy, translate start
-GT-02 translate, create & delete methods, export pdf
+GT-02 translate, CRUD methods, export pdf
